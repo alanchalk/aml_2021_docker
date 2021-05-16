@@ -60,7 +60,10 @@ RUN $CONDA_DIR/bin/python -m pip install \
     yellowbrick \
     skope-rules \
     shap \
-    lime
+    lime \
+    lightgbm \
+    catboost \
+    xgboost
 
 
 # --- Install h2o
@@ -69,12 +72,12 @@ RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/
 # --- Conda xgboost, lightgbm, catboost
 RUN conda install --quiet --yes \
 #    'boost' \
-    'lightgbm' \
-    'xgboost' \
-    'catboost' && \
-    conda clean -tipsy && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+#    'lightgbm' \
+#    'xgboost' \
+#    'catboost' && \
+#    conda clean -tipsy && \
+#    fix-permissions $CONDA_DIR && \
+#    fix-permissions /home/$NB_USER
 
 
 # --- Install (vowpalwabbit), hyperopt, tpot, yellowbrick
