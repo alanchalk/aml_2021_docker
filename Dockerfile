@@ -53,7 +53,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
     numba \
     bokeh \
     h5py \
-    pytables \
+    tables \
     hyperopt \
     tqdm \
     tpot \
