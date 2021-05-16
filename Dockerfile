@@ -40,7 +40,7 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
-RUN $CONDA_DIR/bin/python -m pip install --no-cache-dir \
+RUN $CONDA_DIR/bin/python -m pip install \
     pandas \
     matplotlib \
     scipy \
