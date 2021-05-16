@@ -70,7 +70,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
 RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
 
 # --- Conda xgboost, lightgbm, catboost
-RUN conda install --quiet --yes \
+#RUN conda install --quiet --yes \
 #    'boost' \
 #    'lightgbm' \
 #    'xgboost' \
@@ -79,32 +79,5 @@ RUN conda install --quiet --yes \
 #    fix-permissions $CONDA_DIR && \
 #    fix-permissions /home/$NB_USER
 
-
-# --- Install (vowpalwabbit), hyperopt, tpot, yellowbrick
-#RUN $CONDA_DIR/bin/python -m pip install hyperopt \
-#					 tqdm \
-#					 tpot \
-#					 yellowbrick \
-#           skope-rules \
-#					 shap \
-#					 lime
-
-
-#RUN $CONDA_DIR/bin/python -m pip install git+https://github.com/hyperopt/hyperopt.git
-
-#RUN $CONDA_DIR/bin/python -m pip uninstall scikit-learn -y
-#RUN $CONDA_DIR/bin/python -m pip uninstall pandas -y
-#RUN $CONDA_DIR/bin/python -m pip uninstall scipy -y
-#RUN $CONDA_DIR/bin/python -m pip uninstall statsmodels -y
-
-#RUN $CONDA_DIR/bin/python -m pip install --upgrade Cython
-
-#RUN $CONDA_DIR/bin/python -m pip install scikit-learn \
-#                                         pandas \
-#                                         scipy \
-#                                         missingno
-
-#RUN $CONDA_DIR/bin/python -m pip install git+git://github.com/statsmodels/statsmodels.git
-
 # clean up pip cache
-#RUN rm -rf /root/.cache/pip/*
+RUN rm -rf /root/.cache/pip/*
