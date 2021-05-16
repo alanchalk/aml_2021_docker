@@ -1,7 +1,6 @@
 # Based on Niels Borie ML-docker
 
-FROM jupyter/tensorflow-notebook:115f07f1a4ac
-
+FROM jupyter/tensorflow-notebook:f4c0193bbc96
 LABEL maintainer="Alan CHALK"
 
 USER root
