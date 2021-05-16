@@ -52,7 +52,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
     statsmodels \
     numba \
     bokeh \
-    hdf5 \
+    h5py \
     pytables \
     hyperopt \
     tqdm \
