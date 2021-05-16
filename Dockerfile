@@ -40,7 +40,7 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
-RUN $CONDA_DIR/bin/python -m pip install \
+RUN $CONDA_DIR/bin/python -m pip install --no-cache-dir \
     pandas \
     matplotlib \
     scipy \
@@ -107,4 +107,4 @@ RUN conda install --quiet --yes \
 #RUN $CONDA_DIR/bin/python -m pip install git+git://github.com/statsmodels/statsmodels.git
 
 # clean up pip cache
-RUN rm -rf /root/.cache/pip/*
+#RUN rm -rf /root/.cache/pip/*
