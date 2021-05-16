@@ -1,6 +1,7 @@
 # Based on Niels Borie ML-docker
 
-FROM jupyter/tensorflow-notebook:f4c0193bbc96
+#FROM jupyter/tensorflow-notebook:f4c0193bbc96
+FROM jupyter/minimal-notebook:f4c0193bbc96
 LABEL maintainer="Alan CHALK"
 
 USER root
@@ -39,12 +40,35 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
+RUN $CONDA_DIR/bin/python -m pip install \
+    pandas \
+    matplotlib \
+    scipy \
+    seaborn \
+    scikit-learn \
+    scikit-image \
+    cython \
+    patsy \
+    statsmodel \
+    numba \
+    bokeh \
+    hdf5 \
+    pytables \
+    hyperopt \
+    tqdm \
+    tpot \
+    yellowbrick \
+    skope-rules \
+    shap \
+    lime
+
+
 # --- Install h2o
 RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
 
 # --- Conda xgboost, lightgbm, catboost, h2o, gensim, mlxtend
 RUN conda install --quiet --yes \
-    'boost' \
+#    'boost' \
     'lightgbm' \
     'xgboost' \
     'catboost' && \
@@ -53,35 +77,31 @@ RUN conda install --quiet --yes \
     fix-permissions /home/$NB_USER
 
 
-# --- Install (vowpalwabbit), hyperopt, tpot, sklearn-deap, yellowbrick, spacy
-RUN $CONDA_DIR/bin/python -m pip install hyperopt \
-					 update_checker \
-					 tqdm \
-					 scikit-mdr \
-					 tpot \
-					 yellowbrick \
-           skope-rules \
-					 shap \
-					 lime
+# --- Install (vowpalwabbit), hyperopt, tpot, yellowbrick
+#RUN $CONDA_DIR/bin/python -m pip install hyperopt \
+#					 tqdm \
+#					 tpot \
+#					 yellowbrick \
+#           skope-rules \
+#					 shap \
+#					 lime
 
 
-RUN $CONDA_DIR/bin/python -m pip install git+https://github.com/hyperopt/hyperopt.git
+#RUN $CONDA_DIR/bin/python -m pip install git+https://github.com/hyperopt/hyperopt.git
 
-RUN $CONDA_DIR/bin/python -m pip uninstall scikit-learn -y
-RUN $CONDA_DIR/bin/python -m pip uninstall pandas -y
-RUN $CONDA_DIR/bin/python -m pip uninstall scipy -y
-RUN $CONDA_DIR/bin/python -m pip uninstall statsmodels -y
+#RUN $CONDA_DIR/bin/python -m pip uninstall scikit-learn -y
+#RUN $CONDA_DIR/bin/python -m pip uninstall pandas -y
+#RUN $CONDA_DIR/bin/python -m pip uninstall scipy -y
+#RUN $CONDA_DIR/bin/python -m pip uninstall statsmodels -y
 
-RUN $CONDA_DIR/bin/python -m pip install --upgrade Cython
+#RUN $CONDA_DIR/bin/python -m pip install --upgrade Cython
 
-RUN $CONDA_DIR/bin/python -m pip install scikit-learn \
-                                         pandas \
-                                         scipy \
-                                         missingno
+#RUN $CONDA_DIR/bin/python -m pip install scikit-learn \
+#                                         pandas \
+#                                         scipy \
+#                                         missingno
 
-RUN $CONDA_DIR/bin/python -m pip install git+git://github.com/statsmodels/statsmodels.git
-
-
+#RUN $CONDA_DIR/bin/python -m pip install git+git://github.com/statsmodels/statsmodels.git
 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
