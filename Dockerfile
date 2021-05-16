@@ -1,4 +1,4 @@
-# Based on Niels Borie ML-docker
+# Cut down version of Niels Borie ML-docker
 
 #FROM jupyter/tensorflow-notebook:f4c0193bbc96
 FROM jupyter/minimal-notebook:f4c0193bbc96
@@ -49,7 +49,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
     scikit-image \
     cython \
     patsy \
-    statsmodel \
+    statsmodels \
     numba \
     bokeh \
     hdf5 \
@@ -66,7 +66,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
 # --- Install h2o
 RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
 
-# --- Conda xgboost, lightgbm, catboost, h2o, gensim, mlxtend
+# --- Conda xgboost, lightgbm, catboost
 RUN conda install --quiet --yes \
 #    'boost' \
     'lightgbm' \
