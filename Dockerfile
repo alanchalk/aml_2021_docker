@@ -47,10 +47,7 @@ RUN conda install --quiet --yes \
     'boost' \
     'lightgbm' \
     'xgboost' \
-    'catboost' \
-    'gensim' \
-    'mlxtend' \
-    'tabulate' && \
+    'catboost' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
@@ -58,18 +55,11 @@ RUN conda install --quiet --yes \
 
 # --- Install (vowpalwabbit), hyperopt, tpot, sklearn-deap, yellowbrick, spacy
 RUN $CONDA_DIR/bin/python -m pip install hyperopt \
-					 deap \
 					 update_checker \
 					 tqdm \
-					 stopit \
 					 scikit-mdr \
-					 skrebate \
 					 tpot \
-					 sklearn-deap \
 					 yellowbrick \
-					 spacy \
-					 gplearn \
-					 kmapper \
            skope-rules \
 					 shap \
 					 lime
