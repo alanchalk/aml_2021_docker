@@ -1,6 +1,6 @@
 # aml_2021
 
-A Docker image for Cass AML 2019
+A Docker image for Cass AML 2021
 ---
 
 Based on Neils Borie (ml-docker) but some packages updated and others removed.
@@ -20,9 +20,8 @@ In particular vowpal wabbit removed since the requirement for this seem to confl
 * hyperopt
 * shap
 * skope-rules
-* h2o 
+* h2o
 
 
 # Docker Hub
 Original source: https://hub.docker.com/r/nielsborie/ml-docker/
-
