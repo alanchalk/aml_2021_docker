@@ -67,17 +67,21 @@ RUN $CONDA_DIR/bin/python -m pip install \
 
 
 # --- Install h2o
-RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
+# RUN $CONDA_DIR/bin/python -m pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o
+# --- Install h2o changed to install specific version (from 29/5/2021)
+# links for specific versions can be found at https://github.com/h2oai/h2o-3/blob/master/Changes.md
+# Particularly necessary because models built on older versions are not guaranteed
+# to run on newer versions.  Hence students rebuilding the image could find
+# models do not work, unless model is fixed.
+RUN $CONDA_DIR/bin/python -m pip install -f pip install http://h2o-release.s3.amazonaws.com/h2o/rel-zipf/2/Python/h2o-3.32.1.2-py2.py3-none-any.whl
 
-# --- Conda xgboost, lightgbm, catboost
-#RUN conda install --quiet --yes \
-#    'boost' \
-#    'lightgbm' \
-#    'xgboost' \
-#    'catboost' && \
-#    conda clean -tipsy && \
-#    fix-permissions $CONDA_DIR && \
-#    fix-permissions /home/$NB_USER
+# --- category_encoders deliberately added here and not above so as not to
+# change the pip solver for above package versions.  A pip install
+# of  category_encoders inside of the v1 container showed no packages
+# were updated and I would like to ensure this here too.
+RUN $CONDA_DIR/bin/python -m pip install \
+    category_encoders
+
 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
