@@ -25,14 +25,14 @@ In particular vowpal wabbit removed since the requirement for this seem to confl
 
 tag: week 4
 
-Added category_encoders for week 4 material
-Fixed version of h2o
+- Added category_encoders for week 4 material
+- Fixed version of h2o
 
 tag: week 5
 
-Added catboost dependencies for graphics
-Fixed versions of main packages
-Tidied dockerfile
+- Added catboost dependencies for graphics
+- Fixed versions of main packages
+- Tidied dockerfile
 
 
 # Docker Hub
