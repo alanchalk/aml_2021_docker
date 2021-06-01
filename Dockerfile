@@ -1,6 +1,5 @@
 # Cut down version of Niels Borie ML-docker
 
-#FROM jupyter/tensorflow-notebook:f4c0193bbc96
 FROM jupyter/minimal-notebook:f4c0193bbc96
 LABEL maintainer="Alan CHALK"
 
@@ -41,29 +40,32 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
 RUN $CONDA_DIR/bin/python -m pip install \
-    pandas \
-    matplotlib \
-    scipy \
-    seaborn \
-    scikit-learn \
-    scikit-image \
-    cython \
-    patsy \
-    statsmodels \
-    numba \
-    bokeh \
-    h5py \
-    tables \
-    hyperopt \
+    bokeh==2.3.2 \
+    catboost==0.25.1 \
+    category_encoders==2.2.2 \
+    cython==0.29.23 \
+    h5py==3.2.1 \
+    hyperopt==0.2.5 \
+    ipywidgets==7.6.3 \
+    lime==0.2.0.1 \
+    lightgbm==3.2.1 \
+    matplotlib==3.4.2 \
+    numba==0.53.1 \
+    numpy==1.19.5 \
+    pandas==1.2.4 \
+    patsy==0.5.1 \
+    scikit-learn==0.24.2 \
+    scikit-image==0.18.1 \
+    scipy==1.6.3 \
+    seaborn==0.11.1 \
+    shap==0.39.0 \
+    skope-rules==1.0.1 \
+    statsmodels==0.12.2 \
+    tables==3.6.1 \
+    TPOT==0.11.7 \
     tqdm \
-    tpot \
-    yellowbrick \
-    skope-rules \
-    shap \
-    lime \
-    lightgbm \
-    catboost \
-    xgboost
+    yellowbrick==1.3.post1 \
+    xgboost==1.4.2
 
 
 # --- Install h2o
@@ -75,13 +77,9 @@ RUN $CONDA_DIR/bin/python -m pip install \
 # models do not work, unless model is fixed.
 RUN $CONDA_DIR/bin/python -m pip install -f pip install http://h2o-release.s3.amazonaws.com/h2o/rel-zipf/2/Python/h2o-3.32.1.2-py2.py3-none-any.whl
 
-# --- category_encoders deliberately added here and not above so as not to
-# change the pip solver for above package versions.  A pip install
-# of  category_encoders inside of the v1 container showed no packages
-# were updated and I would like to ensure this here too.
-RUN $CONDA_DIR/bin/python -m pip install \
-    category_encoders
-
+# widgets for catboost graphics
+RUN $CONDA_DIR/bin/jupyter nbextension install --user --py widgetsnbextension
+RUN $CONDA_DIR/bin/jupyter nbextension enable widgetsnbextension --user --py
 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
