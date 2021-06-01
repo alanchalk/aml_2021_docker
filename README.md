@@ -29,6 +29,7 @@ Added category_encoders for week 4 material
 Fixed version of h2o
 
 tag: week 5
+
 Added catboost dependencies for graphics
 Fixed versions of main packages
 Tidied dockerfile
