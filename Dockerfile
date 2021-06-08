@@ -44,6 +44,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
     catboost==0.25.1 \
     category_encoders==2.2.2 \
     cython==0.29.23 \
+    eli5==0.11.0 \
     h5py==3.2.1 \
     hyperopt==0.2.5 \
     ipywidgets==7.6.3 \
@@ -51,9 +52,10 @@ RUN $CONDA_DIR/bin/python -m pip install \
     lightgbm==3.2.1 \
     matplotlib==3.4.2 \
     numba==0.53.1 \
-    numpy==1.19.5 \
+    numpy==1.20.3 \
     pandas==1.2.4 \
     patsy==0.5.1 \
+    pycebox==0.0.1 \
     scikit-learn==0.24.2 \
     scikit-image==0.18.1 \
     scipy==1.6.3 \
@@ -64,7 +66,7 @@ RUN $CONDA_DIR/bin/python -m pip install \
     tables==3.6.1 \
     TPOT==0.11.7 \
     tqdm \
-    yellowbrick==1.3.post1 \
+#    yellowbrick==1.3.post1 \
     xgboost==1.4.2
 
 

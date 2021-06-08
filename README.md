@@ -36,6 +36,10 @@ tag: week 5
 
 tag: week 6
 - Added vowpal wabbit (command line only)
+- Added pycebox==0.0.1
+- Added eli5==0.11.0
+- Upgrade numpy to 1.20.3 else shap does not work
+-  Now removed yellowbrick==1.3.post1 because it causes a numpy version conflict
 
 
 # Docker Hub
