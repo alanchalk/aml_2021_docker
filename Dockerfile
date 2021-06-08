@@ -81,5 +81,11 @@ RUN $CONDA_DIR/bin/python -m pip install -f pip install http://h2o-release.s3.am
 RUN $CONDA_DIR/bin/jupyter nbextension install --user --py widgetsnbextension
 RUN $CONDA_DIR/bin/jupyter nbextension enable widgetsnbextension --user --py
 
+# --- Install vowpall wabbit (command line only)
+# I check in the week 5 docker container that this does not updated any packages
+# I found previously that the python API for vw downgrades many packages and
+# I also found the command line version OK to use from within a Python notebook
+RUN apt-get install vowpal-wabbit
+
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*

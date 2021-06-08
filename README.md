@@ -34,6 +34,9 @@ tag: week 5
 - Fixed versions of main packages
 - Tidied dockerfile
 
+tag: week 6
+- Added vowpal wabbit (command line only)
+
 
 # Docker Hub
 Original source: https://hub.docker.com/r/nielsborie/ml-docker/
