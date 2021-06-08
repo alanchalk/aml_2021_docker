@@ -85,7 +85,7 @@ RUN $CONDA_DIR/bin/jupyter nbextension enable widgetsnbextension --user --py
 # I check in the week 5 docker container that this does not updated any packages
 # I found previously that the python API for vw downgrades many packages and
 # I also found the command line version OK to use from within a Python notebook
-RUN apt-get install vowpal-wabbit
+RUN apt-get install -y vowpal-wabbit
 
 # clean up pip cache
 RUN rm -rf /root/.cache/pip/*
